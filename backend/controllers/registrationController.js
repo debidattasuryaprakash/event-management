@@ -21,7 +21,9 @@ exports.registerForEvent = async (req, res) => {
 
     const qrData = `${eventId}_${userId}_${new Date().getTime()}`;
 
-    const qrCode = await QRCode.toDataURL(qrData); // base64 PNG image
+    const qrCode = await QRCode.toDataURL(qrData); // base64 PNG image\
+
+    res.json({ qrCode: qrCode });
 
     const registration = await Registration.create({
       attendee: userId,
